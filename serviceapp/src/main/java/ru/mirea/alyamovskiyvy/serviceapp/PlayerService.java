@@ -30,7 +30,7 @@ public class PlayerService extends Service {
                 .setSmallIcon(R.mipmap.ic_launcher)
                 .setPriority(NotificationCompat.PRIORITY_HIGH)
                 .setStyle(new NotificationCompat.BigTextStyle()
-                        .bigText("best player..."))
+                        .bigText("Playing: Erik Satie - Gnossienne No.3"))
                 .setContentTitle("Music Player")
                 .setSound(null);
 
