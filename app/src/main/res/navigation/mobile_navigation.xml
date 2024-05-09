@@ -32,4 +32,9 @@
         android:name="ru.mirea.alyamovskiyvy.mireaproject.ui.webview.WebViewFragment"
         android:label="Browser"
         tools:layout="@layout/fragment_web_view" />
+    <fragment
+        android:id="@+id/stopwatchFragment"
+        android:name="ru.mirea.alyamovskiyvy.mireaproject.ui.stopwatch.StopwatchFragment"
+        android:label="StopwatchFragment"
+        tools:layout="@layout/fragment_stopwatch"/>
 </navigation>

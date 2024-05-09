@@ -24,6 +24,10 @@
             android:id="@+id/webViewFragment"
             android:icon="@drawable/browser"
             android:title="Browser"/>
+        <item
+            android:id="@+id/stopwatchFragment"
+            android:icon="@drawable/stopwatch"
+            android:title="Timer"/>
 
     </group>
 </menu>
