@@ -46,13 +46,13 @@ public class StopwatchFragment extends Fragment {
                         binding.minutesTextView.post(new Runnable() {
                             @Override
                             public void run() {
-                                binding.minutesTextView.setText(String.valueOf(minutes));
+                                binding.minutesTextView.setText(AddZeroIfNeeded(minutes));
                             }
                         });
                         binding.secondsTextView.post(new Runnable() {
                             @Override
                             public void run() {
-                                binding.secondsTextView.setText(String.valueOf(seconds));
+                                binding.secondsTextView.setText(AddZeroIfNeeded(seconds));
                             }
                         });
                         TimeUnit.SECONDS.sleep(1);
@@ -68,5 +68,12 @@ public class StopwatchFragment extends Fragment {
             }
         }).start();
         return binding.getRoot();
+    }
+
+    private String AddZeroIfNeeded(int number){
+        if (number < 10 && number >= 0)
+            return String.format("0%d", number);
+        else
+            return String.valueOf(number);
     }
 }
