@@ -37,4 +37,19 @@
         android:name="ru.mirea.alyamovskiyvy.mireaproject.ui.stopwatch.StopwatchFragment"
         android:label="StopwatchFragment"
         tools:layout="@layout/fragment_stopwatch"/>
+    <fragment
+        android:id="@+id/temperatrueFragment"
+        android:name="ru.mirea.alyamovskiyvy.mireaproject.ui.temperature.TemperatureFragment"
+        android:label="fragment_temperature"
+        tools:layout="@layout/fragment_temperature" />
+    <fragment
+        android:id="@+id/myProfileFragment"
+        android:name="ru.mirea.alyamovskiyvy.mireaproject.ui.myprofile.MyProfileFragment"
+        android:label="fragment_my_profile"
+        tools:layout="@layout/fragment_my_profile" />
+    <fragment
+        android:id="@+id/voiceNotesFragment"
+        android:name="ru.mirea.alyamovskiyvy.mireaproject.ui.voicenotes.VoiceNotesFragment"
+        android:label="fragment_voice_notes"
+        tools:layout="@layout/fragment_voice_notes" />
 </navigation>

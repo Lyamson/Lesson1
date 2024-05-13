@@ -2,12 +2,15 @@ package ru.mirea.alyamovskiyvy.mireaproject.ui.stopwatch;
 
 import android.os.Bundle;
 
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.io.Console;
 import java.util.concurrent.TimeUnit;
 
 import ru.mirea.alyamovskiyvy.mireaproject.R;
@@ -33,16 +36,18 @@ public class StopwatchFragment extends Fragment {
     }
     FragmentStopwatchBinding binding;
     int minutes = 0, seconds = 0;
+    Thread thread;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         binding = FragmentStopwatchBinding.inflate(inflater, container, false);
-        new Thread(new Runnable() {
+        thread = new Thread(new Runnable() {
             @Override
             public void run() {
                 while (true){
                     try {
+                        Log.d(StopwatchFragment.class.getSimpleName(), "I'm working");
                         binding.minutesTextView.post(new Runnable() {
                             @Override
                             public void run() {
@@ -63,10 +68,12 @@ public class StopwatchFragment extends Fragment {
                         }
                     } catch (InterruptedException e){
                         e.printStackTrace();
+                        return;
                     }
                 }
             }
-        }).start();
+        });
+        thread.start();
         return binding.getRoot();
     }
 
@@ -75,5 +82,11 @@ public class StopwatchFragment extends Fragment {
             return String.format("0%d", number);
         else
             return String.valueOf(number);
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        thread.interrupt();
     }
 }

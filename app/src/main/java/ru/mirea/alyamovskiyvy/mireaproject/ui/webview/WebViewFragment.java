@@ -1,7 +1,14 @@
 package ru.mirea.alyamovskiyvy.mireaproject.ui.webview;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -22,20 +29,13 @@ public class WebViewFragment extends Fragment {
     public WebViewFragment() {
         // Required empty public constructor
     }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @return A new instance of fragment WebViewFragment.
-     */
-    // TODO: Rename and change types and number of parameters
     public static WebViewFragment newInstance() {
         WebViewFragment fragment = new WebViewFragment();
         return fragment;
     }
 
     private WebView web;
+    private boolean isWork;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -47,10 +47,25 @@ public class WebViewFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_web_view, container, false);
+
+        int internetPermission = ContextCompat.checkSelfPermission(this.requireContext(), Manifest.permission.INTERNET);
+        if (internetPermission == PackageManager.PERMISSION_GRANTED){
+            isWork = true;
+        } else{
+            ActivityResultLauncher<String> requestPermissionLauncher = registerForActivityResult(
+                    new ActivityResultContracts.RequestPermission(),
+                    isGranted -> isWork = isGranted
+            );
+            requestPermissionLauncher.launch(Manifest.permission.INTERNET);
+        }
         web = view.findViewById(R.id.webView);
-        web.getSettings().setJavaScriptEnabled(true);
-        web.setWebViewClient(new MyWebViewClient());
-        web.loadUrl("https://www.google.com/");
+        if (isWork) {
+            web.getSettings().setJavaScriptEnabled(true);
+            web.setWebViewClient(new MyWebViewClient());
+            web.loadUrl("https://www.google.com/");
+        }
+        else
+            web.setEnabled(false);
         return view;
     }
 }

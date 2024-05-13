@@ -28,6 +28,17 @@
             android:id="@+id/stopwatchFragment"
             android:icon="@drawable/stopwatch"
             android:title="Timer"/>
-
+        <item
+            android:id="@+id/temperatrueFragment"
+            android:icon="@drawable/temperature"
+            android:title="Temperature"/>
+        <item
+            android:id="@+id/myProfileFragment"
+            android:icon="@drawable/profile_icon"
+            android:title="My Profile"/>
+        <item
+            android:id="@+id/voiceNotesFragment"
+            android:icon="@drawable/voice_notes_icon"
+            android:title="Voice Notes"/>
     </group>
 </menu>
