@@ -47,7 +47,6 @@ public class StopwatchFragment extends Fragment {
             public void run() {
                 while (true){
                     try {
-                        Log.d(StopwatchFragment.class.getSimpleName(), "I'm working");
                         binding.minutesTextView.post(new Runnable() {
                             @Override
                             public void run() {
