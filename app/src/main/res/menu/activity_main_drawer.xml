@@ -44,5 +44,9 @@
             android:id="@+id/filesWorkFragment"
             android:icon="@drawable/voice_notes_icon"
             android:title="Files Cipher"/>
+        <item
+            android:id="@+id/httpInfoFragment"
+            android:icon="@drawable/browser"
+            android:title="HTTP info"/>
     </group>
 </menu>

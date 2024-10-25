@@ -57,4 +57,9 @@
         android:name="ru.mirea.alyamovskiyvy.mireaproject.ui.fileswork.FilesWorkFragment"
         android:label="Files Cipher"
         tools:layout="@layout/fragment_files_work" />
+    <fragment
+        android:id="@+id/httpInfoFragment"
+        android:name="ru.mirea.alyamovskiyvy.mireaproject.ui.httpinfo.httpInfoFragment"
+        android:label="fragment_http_info"
+        tools:layout="@layout/fragment_http_info" />
 </navigation>
